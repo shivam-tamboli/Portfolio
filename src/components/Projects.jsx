@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { m } from 'framer-motion'
 import Tilt from 'react-parallax-tilt'
-import { FaGithub, FaExternalLinkAlt, FaPizzaSlice, FaMusic, FaRobot, FaFileAlt, FaBookOpen } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaPizzaSlice, FaMusic, FaRobot, FaFileAlt, FaBookOpen, FaLaptopCode, FaLock } from 'react-icons/fa'
 import ProjectModal from './ProjectModal'
 
 const projects = [
@@ -26,6 +26,30 @@ const projects = [
         '41 automated tests (pytest + httpx), fully mock-isolated'
       ],
       challenges: 'Citation hallucination — the LLM would confidently cite file paths that did not exist. Fixed by post-processing every answer with a regex validator that cross-checks every cited path against the actual retrieved chunk metadata before sending the response.'
+    }
+  },
+  {
+    id: 'lms',
+    title: 'Learning Management System',
+    description: 'Full-stack LMS built during internship at MIT World Peace University. RESTful backend with Express.js and PostgreSQL, JWT authentication, role-based access control (Admin/Student), normalized relational schema, and a Next.js frontend with role-based routing.',
+    tech: ['TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Next.js', 'JWT'],
+    github: null,
+    demo: null,
+    internship: true,
+    icon: <FaLaptopCode />,
+    gradient: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)',
+    caseStudy: {
+      problem: 'MIT World Peace University needed a centralised platform where admins can manage courses and students can access enrolled content — with strict role separation and a clean, typed backend.',
+      solution: 'Built the complete backend with Express.js and PostgreSQL. Designed a normalized relational schema covering users, courses, enrollments, and sessions. JWT-based authentication with role-based access control (Admin/Student) secures every route. TypeScript with ESLint enforces type safety and consistency across the API layer. Delivered a Next.js frontend with protected routes matching backend roles.',
+      highlights: [
+        'JWT authentication with role-based access control (Admin / Student)',
+        'Normalized PostgreSQL schema: users, courses, enrollments, sessions',
+        'Fully typed TypeScript codebase with ESLint enforcement',
+        'Modular API architecture: auth, course management, student workflows',
+        'Next.js frontend with role-aware routing and Tailwind CSS',
+        'Primary focus on backend API design, data modeling, and server-side logic'
+      ],
+      challenges: 'Ensuring strict role separation without duplicating middleware logic. Solved with a composable auth middleware chain that attaches role context to every request, allowing route-level guards to be declarative rather than repeated.'
     }
   },
   {
@@ -154,16 +178,22 @@ function Projects() {
                   ))}
                 </div>
                 <div className="project-links">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link github"
-                    aria-label={`View ${project.title} source code on GitHub`}
-                  >
-                    <FaGithub /> Code
-                  </a>
-                  {project.demo ? (
+                  {project.internship ? (
+                    <span className="project-badge-internship">
+                      <FaLock /> Internship Project
+                    </span>
+                  ) : (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link github"
+                      aria-label={`View ${project.title} source code on GitHub`}
+                    >
+                      <FaGithub /> Code
+                    </a>
+                  )}
+                  {!project.internship && (project.demo ? (
                     <a
                       href={project.demo}
                       target="_blank"
@@ -175,7 +205,7 @@ function Projects() {
                     </a>
                   ) : (
                     <span className="project-badge-backend">Backend / CLI</span>
-                  )}
+                  ))}
                   <button
                     className="project-link case-study"
                     onClick={() => setSelectedProject(project)}

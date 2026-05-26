@@ -4,14 +4,15 @@ import { FaBriefcase } from 'react-icons/fa'
 const experiences = [
   {
     id: 1,
-    role: 'Software Developer Intern',
-    company: 'Siddesh Technologies Private Limited',
+    role: 'Software Development Intern',
+    company: 'MIT World Peace University',
     location: 'Pune, India',
     period: 'Feb 2026 – Present',
     status: 'Current',
+    project: 'Learning Management System',
     description:
-      'Working on backend development tasks — designing and implementing REST APIs, contributing to feature development, and participating in code reviews within a professional team environment. Applying Java and Spring Boot skills to real-world software projects.',
-    tech: ['Java', 'Spring Boot', 'REST APIs', 'Git'],
+      'Designed and built a RESTful backend with Express.js and PostgreSQL, implementing JWT-based authentication and role-based access control (Admin/Student) for a full Learning Management System. Engineered normalized relational database schemas and wrote typed, ESLint-enforced server-side code in TypeScript. Delivered a Next.js frontend with role-based routing; primary focus on backend API design, data modeling, and server-side logic.',
+    tech: ['TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Next.js', 'JWT', 'ESLint'],
     icon: <FaBriefcase />,
   }
 ]
@@ -51,6 +52,7 @@ function Experience() {
                 <div>
                   <h3 className="experience-role">{item.role}</h3>
                   <p className="experience-company">{item.company}</p>
+                  <p className="experience-project">Project: {item.project}</p>
                   <p className="experience-location">{item.location}</p>
                 </div>
                 <div className="experience-meta">

@@ -1,29 +1,34 @@
 import { m } from 'framer-motion'
-import { FaGraduationCap, FaUniversity } from 'react-icons/fa'
+import { FaGraduationCap, FaUniversity, FaCertificate } from 'react-icons/fa'
 
 const education = [
   {
     id: 1,
-    degree: "Master of Computer Applications (MCA)",
-    institution: "MIT World Peace University",
-    location: "Pune, Maharashtra",
-    period: "2024 – 2026",
-    status: "Pursuing",
-    description: "Specialising in software engineering, AI/ML applications, and advanced system design. Building production-grade full-stack and AI-powered projects alongside coursework.",
+    degree: 'Master of Computer Applications (MCA)',
+    institution: 'MIT World Peace University',
+    location: 'Pune, Maharashtra',
+    period: '2024 – 2026',
+    status: 'Pursuing',
+    courses: ['Advanced Java', 'Web Technologies', 'Database Systems', 'Software Engineering'],
     icon: <FaGraduationCap />,
     accent: true
   },
   {
     id: 2,
-    degree: "Bachelor of Computer Applications (BCA)",
-    institution: "Manipal University Jaipur",
-    location: "Jaipur, Rajasthan",
-    period: "2021 – 2024",
-    status: "Completed",
-    description: "Gained a strong foundation in computer science fundamentals, data structures, algorithms, and web development.",
+    degree: 'Bachelor of Computer Applications (BCA)',
+    institution: 'Manipal University Jaipur',
+    location: 'Jaipur, Rajasthan',
+    period: '2021 – 2024',
+    status: 'Completed',
+    courses: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'Java', 'DBMS'],
     icon: <FaUniversity />,
     accent: false
   }
+]
+
+const certifications = [
+  { name: 'Java Development',            issuer: 'Coursera' },
+  { name: 'Generative AI Fundamentals',  issuer: 'Coursera' },
 ]
 
 function Education() {
@@ -67,11 +72,38 @@ function Education() {
                   </span>
                 </div>
               </div>
-              <p className="education-description">{item.description}</p>
+              <div className="education-courses">
+                {item.courses.map(c => (
+                  <span key={c} className="education-course-tag">{c}</span>
+                ))}
+              </div>
             </div>
           </m.div>
         ))}
       </div>
+
+      <m.div
+        className="certifications"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <h3 className="certifications-heading">
+          <FaCertificate /> Certifications
+        </h3>
+        <div className="certifications-grid">
+          {certifications.map((cert) => (
+            <div key={cert.name} className="certification-card">
+              <FaCertificate className="cert-icon" />
+              <div>
+                <p className="cert-name">{cert.name}</p>
+                <p className="cert-issuer">{cert.issuer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </m.div>
     </section>
   )
 }
