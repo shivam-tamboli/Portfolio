@@ -1,13 +1,12 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import emailjs from '@emailjs/browser'
 
-// EmailJS credentials - https://www.emailjs.com/
-const EMAILJS_SERVICE_ID = 'service_v887vh6'
-const EMAILJS_TEMPLATE_ID = 'template_uxwa6zs'
-const EMAILJS_PUBLIC_KEY = '_cZgTwLLSR_sca2en'
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -52,11 +51,9 @@ function Contact() {
         EMAILJS_PUBLIC_KEY
       )
       
-      console.log('EmailJS Success:', response)
       toast.success('Message sent successfully! I will get back to you soon.')
       setFormData({ name: '', email: '', message: '' })
     } catch (error) {
-      console.error('EmailJS Error:', error)
       toast.error(`Failed to send: ${error.text || error.message || 'Unknown error'}`)
     }
     
@@ -92,7 +89,7 @@ function Contact() {
 
   return (
     <section id="contact" className="contact">
-      <motion.div
+      <m.div
         className="section-header"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -103,16 +100,20 @@ function Contact() {
         <h2 className="section-title">
           Contact <span>Me</span>
         </h2>
-      </motion.div>
+      </m.div>
 
       <div className="contact-content">
+        <div className="contact-availability">
+          <span className="contact-availability-dot" />
+          Open to full-time roles &amp; freelance projects — typically responds within 24 hours
+        </div>
         <p className="contact-intro">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. 
-          Feel free to reach out if you'd like to collaborate or just want to say hi!
+          Looking to hire a developer who can build backend APIs, AI-powered features, or full-stack
+          web apps? I'd love to hear about it. Reach out below or directly via email.
         </p>
 
         <div className="contact-wrapper">
-          <motion.div
+          <m.div
             className="contact-info"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -135,9 +136,9 @@ function Contact() {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="contact-form"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -187,7 +188,7 @@ function Contact() {
                 )}
               </button>
             </form>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

@@ -1,61 +1,68 @@
-import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa'
+import { m } from 'framer-motion'
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from 'react-icons/fa'
+
+const socialLinks = [
+  { name: 'GitHub',   url: 'https://github.com/shivam-tamboli',         icon: <FaGithub /> },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/shivamtamboli/', icon: <FaLinkedin /> },
+  { name: 'Email',    url: 'mailto:shivamtamboli66@gmail.com',           icon: <FaEnvelope /> }
+]
 
 function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/shivam-tamboli',
-      icon: <FaGithub />
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/shivamtamboli/',
-      icon: <FaLinkedin />
-    },
-    {
-      name: 'Email',
-      url: 'mailto:shivamtamboli66@gmail.com',
-      icon: <FaEnvelope />
-    }
-  ]
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-left">
-          <p>
-            © {currentYear} Shivam Tamboli. Built with <FaHeart style={{ color: '#ff6b6b', margin: '0 5px' }} /> and React
-          </p>
+      <div className="footer-inner">
+
+        <div className="footer-top">
+          <div className="footer-brand">
+            <span className="footer-logo">ST</span>
+            <p className="footer-tagline">Building backends, shipping AI.</p>
+          </div>
+
+          <m.div
+            className="footer-socials"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {socialLinks.map((social) => (
+              <m.a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="footer-social-link"
+              >
+                {social.icon}
+              </m.a>
+            ))}
+          </m.div>
         </div>
-        
-        <motion.div
-          className="footer-socials"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {socialLinks.map((social, index) => (
-            <motion.a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.name}
-              whileHover={{ y: -3 }}
-              transition={{ duration: 0.2 }}
-            >
-              {social.icon}
-            </motion.a>
-          ))}
-        </motion.div>
+
+        <div className="footer-bottom">
+          <p className="footer-copy">
+            © {currentYear} Shivam Tamboli — Built with React, Vite &amp; Framer Motion
+          </p>
+          <button
+            className="back-to-top"
+            onClick={scrollToTop}
+            aria-label="Back to top"
+          >
+            <FaArrowUp />
+            <span>Back to top</span>
+          </button>
+        </div>
+
       </div>
     </footer>
   )
 }
 
 export default Footer
-

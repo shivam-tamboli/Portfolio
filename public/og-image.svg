@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00bfff"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#00bfff" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#00bfff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Border frame -->
+  <rect x="32" y="32" width="1136" height="566" rx="16" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+
+  <!-- Top accent bar -->
+  <rect x="32" y="32" width="1136" height="3" rx="1.5" fill="url(#accent)"/>
+
+  <!-- Available badge -->
+  <rect x="80" y="80" width="230" height="34" rx="17" fill="#00ff8814" stroke="#00ff8840" stroke-width="1"/>
+  <circle cx="102" cy="97" r="5" fill="#00ff88"/>
+  <text x="116" y="102" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="500" fill="#00ff88">Available for opportunities</text>
+
+  <!-- Name -->
+  <text x="80" y="200" font-family="'Segoe UI', system-ui, sans-serif" font-size="72" font-weight="800" fill="#ffffff">Shivam Tamboli</text>
+
+  <!-- Gradient underline -->
+  <rect x="80" y="214" width="520" height="4" rx="2" fill="url(#accent)"/>
+
+  <!-- Title line -->
+  <text x="80" y="278" font-family="'Courier New', monospace" font-size="26" font-weight="400" fill="#a0a0a0">Full Stack Developer  ·  AI Application Builder</text>
+
+  <!-- Tech tags -->
+  <g font-family="'Courier New', monospace" font-size="14" font-weight="400">
+    <!-- Tag 1 -->
+    <rect x="80" y="320" width="120" height="30" rx="6" fill="#151515" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="140" y="340" text-anchor="middle" fill="#a0a0a0">Java · Spring Boot</text>
+    <!-- Tag 2 -->
+    <rect x="212" y="320" width="100" height="30" rx="6" fill="#151515" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="262" y="340" text-anchor="middle" fill="#a0a0a0">FastAPI · Python</text>
+    <!-- Tag 3 -->
+    <rect x="324" y="320" width="80" height="30" rx="6" fill="#151515" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="364" y="340" text-anchor="middle" fill="#a0a0a0">React · Vite</text>
+    <!-- Tag 4 -->
+    <rect x="416" y="320" width="130" height="30" rx="6" fill="#151515" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="481" y="340" text-anchor="middle" fill="#a0a0a0">Spring AI · OpenAI</text>
+    <!-- Tag 5 -->
+    <rect x="558" y="320" width="130" height="30" rx="6" fill="#151515" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="623" y="340" text-anchor="middle" fill="#a0a0a0">MongoDB · MySQL</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="80" y1="390" x2="560" y2="390" stroke="#2a2a2a" stroke-width="1"/>
+
+  <!-- Contact row -->
+  <text x="80" y="425" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#666666">shivamtamboli66@gmail.com</text>
+  <text x="310" y="425" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#444444">  ·  </text>
+  <text x="330" y="425" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#666666">github.com/shivam-tamboli</text>
+  <text x="560" y="425" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#444444">  ·  </text>
+  <text x="580" y="425" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#666666">linkedin.com/in/shivamtamboli</text>
+
+  <!-- Right side decorative code block -->
+  <rect x="760" y="80" width="360" height="440" rx="14" fill="#111111" stroke="#1e1e1e" stroke-width="1"/>
+  <rect x="760" y="80" width="360" height="36" rx="14" fill="#151515"/>
+  <rect x="760" y="102" width="360" height="14" fill="#151515"/>
+  <circle cx="788" cy="98" r="6" fill="#ff5f56"/>
+  <circle cx="808" cy="98" r="6" fill="#ffbd2e"/>
+  <circle cx="828" cy="98" r="6" fill="#27c93f"/>
+
+  <g font-family="'Courier New', monospace" font-size="13">
+    <text x="784" y="144" fill="#666666">// RAG Pipeline</text>
+    <text x="784" y="168" fill="#00bfff">class </text>
+    <text x="832" y="168" fill="#ffffff">RecommendationService</text>
+    <text x="784" y="192" fill="#a0a0a0">  embed(query)</text>
+    <text x="784" y="216" fill="#a0a0a0">    → vectorSearch(HNSW)</text>
+    <text x="784" y="240" fill="#a0a0a0">    → rerank(GPT-4o-mini)</text>
+    <text x="784" y="264" fill="#a0a0a0">    → cache(15min TTL)</text>
+    <text x="784" y="304" fill="#666666">// Hybrid Search</text>
+    <text x="784" y="328" fill="#00ff88">RRF</text>
+    <text x="814" y="328" fill="#a0a0a0">.fuse(</text>
+    <text x="784" y="352" fill="#a0a0a0">  vectorSearch,</text>
+    <text x="784" y="376" fill="#a0a0a0">  keywordSearch</text>
+    <text x="784" y="400" fill="#a0a0a0">)</text>
+    <text x="784" y="440" fill="#666666">// 41 tests passing ✓</text>
+    <text x="784" y="464" fill="#00ff88">pytest </text>
+    <text x="836" y="464" fill="#a0a0a0">--tb=short</text>
+  </g>
+</svg>

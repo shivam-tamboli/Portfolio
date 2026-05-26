@@ -1,16 +1,69 @@
-import { motion } from 'framer-motion'
-import { FaUser, FaCode, FaRocket } from 'react-icons/fa'
+import { useState, useEffect, useRef } from 'react'
+import { m } from 'framer-motion'
+
+function useCountUp(target, duration = 1200) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          const start = performance.now()
+          const tick = (now) => {
+            const elapsed = now - start
+            const progress = Math.min(elapsed / duration, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            setCount(Math.floor(eased * target))
+            if (progress < 1) requestAnimationFrame(tick)
+            else setCount(target)
+          }
+          requestAnimationFrame(tick)
+        }
+      },
+      { threshold: 0.5 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target, duration])
+
+  return [count, ref]
+}
+
+function StatItem({ number, label, delay }) {
+  const raw = parseInt(number)
+  const suffix = number.replace(String(raw), '')
+  const [count, ref] = useCountUp(raw, 1000)
+
+  return (
+    <m.div
+      ref={ref}
+      className="stat-item"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay }}
+    >
+      <div className="stat-number">{count}{suffix}</div>
+      <div className="stat-label">{label}</div>
+    </m.div>
+  )
+}
 
 function About() {
   const stats = [
-    { number: '3+', label: 'Projects Completed' },
-    { number: '1+', label: 'Years Experience' },
-    { number: '5+', label: 'Technologies' }
+    { number: '4+', label: 'Projects Completed' },
+    { number: '2+', label: 'Years Experience' },
+    { number: '10+', label: 'Technologies' }
   ]
 
   return (
     <section id="about" className="about">
-      <motion.div
+      <m.div
         className="section-header"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,10 +74,10 @@ function About() {
         <h2 className="section-title">
           Get to know <span>Me</span>
         </h2>
-      </motion.div>
+      </m.div>
 
       <div className="about-content">
-        <motion.div
+        <m.div
           className="about-image"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -32,54 +85,81 @@ function About() {
           transition={{ duration: 0.6 }}
         >
           <div className="about-image-wrapper">
-            <div className="about-image-placeholder">
-              <FaUser />
-            </div>
+            <img
+              src="/profile.jpg"
+              alt="Shivam Tamboli"
+              className="about-photo"
+            />
           </div>
           <div className="about-image-decoration"></div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="about-text"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3>Full Stack Developer & Backend Specialist</h3>
+          <h3>Full Stack Developer & AI Application Builder</h3>
           <p>
-            I'm a passionate Full Stack Developer with expertise in building robust backend 
-            systems and modern web applications. My journey in software development has 
-            been focused on creating efficient, scalable solutions using Java, Spring Boot, 
-            and modern frontend technologies.
+            I'm a Full Stack Developer pursuing my MCA at MIT World Peace University,
+            with a strong foundation in Java, Spring Boot, and React. I build everything
+            from REST APIs and full-stack web apps to AI-powered systems using RAG pipelines,
+            vector search, and LLM integrations.
           </p>
           <p>
-            I specialize in developing RESTful APIs, managing database systems, and building 
-            full-stack applications with clean architecture. I'm constantly learning and 
-            adapting to new technologies to stay at the forefront of web development.
+            My recent work includes a production-grade RAG codebase assistant (Python + FastAPI
+            + OpenAI), an AI song recommender using Spring AI and MongoDB Atlas Vector Search,
+            and a multilingual document translation service powered by Sarvam AI.
           </p>
           <p>
-            When I'm not coding, you'll find me exploring new technologies, contributing to 
-            open-source projects, or sharing knowledge with the developer community.
+            I enjoy tackling problems that sit at the intersection of backend engineering and
+            applied AI — building systems that are both technically solid and genuinely useful.
           </p>
 
           <div className="about-stats">
             {stats.map((stat, index) => (
-              <motion.div
+              <StatItem
                 key={stat.label}
-                className="stat-item"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-              >
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
-              </motion.div>
+                number={stat.number}
+                label={stat.label}
+                delay={0.4 + index * 0.1}
+              />
             ))}
           </div>
-        </motion.div>
+
+          <div className="currently-learning">
+            <span className="learning-label">// currently exploring</span>
+            <div className="learning-tags">
+              {['System Design', 'Kubernetes', 'LLM Fine-tuning', 'Microservices'].map(tag => (
+                <span key={tag} className="learning-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </m.div>
       </div>
+
+      <m.div
+        className="github-stats"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <img
+          src="https://github-readme-stats.vercel.app/api?username=shivam-tamboli&show_icons=true&theme=transparent&hide_border=true&title_color=00ff88&icon_color=00ff88&text_color=a0a0a0&bg_color=00000000&rank_icon=github"
+          alt="Shivam's GitHub stats"
+          className="github-stats-card"
+          loading="lazy"
+        />
+        <img
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=shivam-tamboli&layout=compact&theme=transparent&hide_border=true&title_color=00ff88&text_color=a0a0a0&bg_color=00000000&langs_count=6"
+          alt="Top languages"
+          className="github-stats-card"
+          loading="lazy"
+        />
+      </m.div>
     </section>
   )
 }

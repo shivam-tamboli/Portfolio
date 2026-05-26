@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import { FaJava, FaPython, FaJs, FaReact, FaDatabase, FaServer, FaTools, FaCode } from 'react-icons/fa'
+import { m } from 'framer-motion'
+import { FaReact, FaDatabase, FaServer, FaTools, FaCode, FaRobot } from 'react-icons/fa'
 
 const skillCategories = [
   {
@@ -10,34 +10,34 @@ const skillCategories = [
   {
     title: 'Frontend Development',
     icon: <FaReact />,
-    skills: ['React', 'HTML', 'CSS', 'Thymeleaf']
+    skills: ['React 19', 'HTML5', 'CSS3', 'Vite', 'Tailwind CSS', 'Axios']
   },
   {
     title: 'Backend & Frameworks',
     icon: <FaServer />,
-    skills: ['Spring Boot', 'Spring Data JPA', 'Hibernate', 'MVC Architecture']
+    skills: ['Spring Boot 3', 'Spring AI', 'Spring Data JPA', 'Hibernate', 'FastAPI', 'REST APIs']
   },
   {
-    title: 'Databases',
+    title: 'Databases & Search',
     icon: <FaDatabase />,
-    skills: ['MySQL', 'H2 Database']
+    skills: ['MongoDB Atlas', 'MySQL', 'Vector Search (HNSW)', 'H2 Database']
   },
   {
-    title: 'Tools & Technologies',
+    title: 'AI & Integrations',
+    icon: <FaRobot />,
+    skills: ['OpenAI API', 'Sarvam AI', 'RAG Pipelines', 'LLM Integration', 'Prompt Engineering']
+  },
+  {
+    title: 'Tools & DevOps',
     icon: <FaTools />,
-    skills: ['Git', 'GitHub', 'Postman', 'Maven', 'RESTful APIs']
-  },
-  {
-    title: 'Concepts',
-    icon: <FaJava />,
-    skills: ['OOP', 'Dependency Injection', 'Exception Handling', 'CRUD Operations']
+    skills: ['Git', 'GitHub', 'Docker', 'Maven', 'Postman', 'JWT Auth']
   }
 ]
 
 function Skills() {
   return (
     <section id="skills" className="skills">
-      <motion.div
+      <m.div
         className="section-header"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,12 +48,12 @@ function Skills() {
         <h2 className="section-title">
           Technical <span>Expertise</span>
         </h2>
-      </motion.div>
+      </m.div>
 
       <div className="skills-container">
         <div className="skills-grid">
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
+            <m.div
               key={category.title}
               className="skill-category"
               initial={{ opacity: 0, y: 30 }}
@@ -67,7 +67,7 @@ function Skills() {
               </h3>
               <div className="skill-tags">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.span
+                  <m.span
                     key={skill}
                     className="skill-tag"
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -77,10 +77,10 @@ function Skills() {
                     whileHover={{ scale: 1.05 }}
                   >
                     {skill}
-                  </motion.span>
+                  </m.span>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
