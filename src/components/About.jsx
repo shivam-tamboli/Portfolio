@@ -102,8 +102,8 @@ function About() {
         >
           <h3>Backend Developer & AI Application Builder</h3>
           <p>
-            I'm a final-year MCA student at MIT World Peace University and a Software Developer
-            Intern at Siddesh Technologies, Pune. My core focus is backend engineering — designing
+            I'm a final-year MCA student and Software Development Intern at MIT World Peace
+            University, Pune. My core focus is backend engineering — designing
             REST APIs with Java and Spring Boot, and building AI-powered systems using RAG pipelines,
             vector search, and LLM integrations.
           </p>
@@ -131,7 +131,7 @@ function About() {
           <div className="currently-learning">
             <span className="learning-label">// currently exploring</span>
             <div className="learning-tags">
-              {['System Design', 'Kubernetes', 'LLM Fine-tuning', 'Microservices'].map(tag => (
+              {['System Design'].map(tag => (
                 <span key={tag} className="learning-tag">{tag}</span>
               ))}
             </div>

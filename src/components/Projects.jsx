@@ -11,7 +11,7 @@ const projects = [
     description: 'Production-grade RAG system for querying code repositories in natural language. Upload a ZIP or import from GitHub, ask questions in plain English, and get AI answers with exact file and line-number citations — streamed token-by-token.',
     tech: ['Python 3.12', 'FastAPI', 'MongoDB Atlas', 'React 19', 'OpenAI', 'Cohere', 'JWT'],
     github: 'https://github.com/shivam-tamboli/AI-CodeBase-Assistant',
-    demo: null,
+    demo: 'https://ai-code-base-assistant-kws4.vercel.app',
     icon: <FaRobot />,
     gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
     caseStudy: {
@@ -58,7 +58,7 @@ const projects = [
     description: 'AI-powered mood-based song recommender. Accepts natural-language mood input, runs semantic vector search via MongoDB Atlas HNSW, re-ranks candidates with GPT-4o-mini, and returns ranked songs with AI-generated explanations.',
     tech: ['Java 21', 'Spring Boot 3.5', 'Spring AI', 'MongoDB Atlas', 'React 19', 'GPT-4o-mini'],
     github: 'https://github.com/shivam-tamboli/lyricmind',
-    demo: null,
+    demo: 'https://lyricmind-two.vercel.app/',
     icon: <FaMusic />,
     gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     caseStudy: {

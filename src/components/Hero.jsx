@@ -5,9 +5,8 @@ import ParticleBackground from './ParticleBackground'
 
 const titles = [
   'Backend Developer',
+  'Software Engineer',
   'Java & Spring Boot Dev',
-  'AI Application Developer',
-  'Full Stack Developer'
 ]
 
 const prefersReducedMotion = () =>
