@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { m } from 'framer-motion'
+import { FaGithub } from 'react-icons/fa'
 
 function useCountUp(target, duration = 1200) {
   const [count, setCount] = useState(0)
@@ -140,24 +141,22 @@ function About() {
       </div>
 
       <m.div
-        className="github-stats"
-        initial={{ opacity: 0, y: 30 }}
+        className="github-cta"
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <img
-          src="https://github-readme-stats.vercel.app/api?username=shivam-tamboli&show_icons=true&theme=transparent&hide_border=true&title_color=00ff88&icon_color=00ff88&text_color=a0a0a0&bg_color=00000000&rank_icon=github"
-          alt="Shivam's GitHub stats"
-          className="github-stats-card"
-          loading="lazy"
-        />
-        <img
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=shivam-tamboli&layout=compact&theme=transparent&hide_border=true&title_color=00ff88&text_color=a0a0a0&bg_color=00000000&langs_count=6"
-          alt="Top languages"
-          className="github-stats-card"
-          loading="lazy"
-        />
+        <a
+          href="https://github.com/shivam-tamboli"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="github-cta-btn"
+          aria-label="View GitHub profile"
+        >
+          <FaGithub />
+          View GitHub Profile
+        </a>
       </m.div>
     </section>
   )
