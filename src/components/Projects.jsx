@@ -7,24 +7,25 @@ import ProjectModal from './ProjectModal'
 const projects = [
   {
     id: 1,
-    title: 'FlavourFleet',
-    description: 'Full-stack food delivery platform with role-based auth (Admin/Customer), REST APIs for order management, keyword search, rating aggregation, and full CRUD on restaurants and menu items.',
-    tech: ['Java 21', 'Spring Boot 3.2', 'Spring Data JPA', 'React 18', 'MySQL', 'Maven'],
-    github: 'https://github.com/shivam-tamboli/-FlavourFleet',
+    title: 'AI Codebase Assistant',
+    description: 'Production-grade RAG system for querying code repositories in natural language. Upload a ZIP or import from GitHub, ask questions in plain English, and get AI answers with exact file and line-number citations — streamed token-by-token.',
+    tech: ['Python 3.12', 'FastAPI', 'MongoDB Atlas', 'React 19', 'OpenAI', 'Cohere', 'JWT'],
+    github: 'https://github.com/shivam-tamboli/AI-CodeBase-Assistant',
     demo: null,
-    icon: <FaPizzaSlice />,
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    icon: <FaRobot />,
+    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
     caseStudy: {
-      problem: 'Build a complete food delivery platform that handles two different user roles — customers browsing and ordering, and admins managing restaurants and menus — with a single backend API serving both.',
-      solution: 'Implemented role-based authentication with Spring Security JWT. Designed a layered REST API architecture using Spring Boot with service, repository, and controller layers. MySQL with Spring Data JPA handles relational data. The React 18 frontend consumes the API via Axios with role-aware route guarding.',
+      problem: 'Developers working on unfamiliar codebases spend hours just finding where things are defined. The goal was a tool you could point at any repository and ask plain-English questions, getting answers with exact file and line references.',
+      solution: 'Built an async FastAPI backend that ingests repositories via ZIP upload or GitHub import. Multi-language AST parsing (Python stdlib ast, tree-sitter for JS/TS/Go/Java/Rust/Ruby) chunks code at function and class boundaries. Chunks are embedded with OpenAI and stored in MongoDB Atlas. Queries run hybrid retrieval — semantic vector search + keyword text search — fused with Reciprocal Rank Fusion (k=60), then re-ranked with Cohere. Answers stream token-by-token via SSE.',
       highlights: [
-        'Role-based access control (Admin / Customer) with JWT authentication',
-        'Full CRUD for restaurants, food items, and orders via REST APIs',
-        'Keyword search across menu items with dynamic filtering',
-        'Rating aggregation system with average calculation per restaurant',
-        'Separated frontend (React) and backend (Spring Boot) with CORS configuration'
+        'Incremental re-indexing via MD5 hash diff — unchanged files produce zero API calls',
+        'Hybrid search: RRF fusion of vector + keyword results for higher recall',
+        'Cohere cross-encoder re-ranking with BM25 fallback',
+        'Multi-turn conversation sessions with tiktoken-based context window management',
+        'JWT auth (HS256) + per-IP rate limiting on all endpoints',
+        '41 automated tests (pytest + httpx), fully mock-isolated'
       ],
-      challenges: 'Keeping the role-based UI logic clean without duplicating API calls. Solved by centralising auth state in a React context and using Axios interceptors to attach JWT headers globally.'
+      challenges: 'Citation hallucination — the LLM would confidently cite file paths that did not exist. Fixed by post-processing every answer with a regex validator that cross-checks every cited path against the actual retrieved chunk metadata before sending the response.'
     }
   },
   {
@@ -51,25 +52,24 @@ const projects = [
   },
   {
     id: 3,
-    title: 'AI Codebase Assistant',
-    description: 'Production-grade RAG system for querying code repositories in natural language. Upload a ZIP or import from GitHub, ask questions in plain English, and get AI answers with exact file and line-number citations — streamed token-by-token.',
-    tech: ['Python 3.12', 'FastAPI', 'MongoDB Atlas', 'React 19', 'OpenAI', 'Cohere', 'JWT'],
-    github: 'https://github.com/shivam-tamboli/AI-CodeBase-Assistant',
+    title: 'FlavourFleet',
+    description: 'Full-stack food delivery platform with role-based auth (Admin/Customer), REST APIs for order management, keyword search, rating aggregation, and full CRUD on restaurants and menu items.',
+    tech: ['Java 21', 'Spring Boot 3.2', 'Spring Data JPA', 'React 18', 'MySQL', 'Maven'],
+    github: 'https://github.com/shivam-tamboli/-FlavourFleet',
     demo: null,
-    icon: <FaRobot />,
-    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    icon: <FaPizzaSlice />,
+    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
     caseStudy: {
-      problem: 'Developers working on unfamiliar codebases spend hours just finding where things are defined. The goal was a tool you could point at any repository and ask plain-English questions, getting answers with exact file and line references.',
-      solution: 'Built an async FastAPI backend that ingests repositories via ZIP upload or GitHub import. Multi-language AST parsing (Python stdlib ast, tree-sitter for JS/TS/Go/Java/Rust/Ruby) chunks code at function and class boundaries. Chunks are embedded with OpenAI and stored in MongoDB Atlas. Queries run hybrid retrieval — semantic vector search + keyword text search — fused with Reciprocal Rank Fusion (k=60), then re-ranked with Cohere. Answers stream token-by-token via SSE.',
+      problem: 'Build a complete food delivery platform that handles two different user roles — customers browsing and ordering, and admins managing restaurants and menus — with a single backend API serving both.',
+      solution: 'Implemented role-based authentication with Spring Security JWT. Designed a layered REST API architecture using Spring Boot with service, repository, and controller layers. MySQL with Spring Data JPA handles relational data. The React 18 frontend consumes the API via Axios with role-aware route guarding.',
       highlights: [
-        'Incremental re-indexing via MD5 hash diff — unchanged files produce zero API calls',
-        'Hybrid search: RRF fusion of vector + keyword results for higher recall',
-        'Cohere cross-encoder re-ranking with BM25 fallback',
-        'Multi-turn conversation sessions with tiktoken-based context window management',
-        'JWT auth (HS256) + per-IP rate limiting on all endpoints',
-        '41 automated tests (pytest + httpx), fully mock-isolated'
+        'Role-based access control (Admin / Customer) with JWT authentication',
+        'Full CRUD for restaurants, food items, and orders via REST APIs',
+        'Keyword search across menu items with dynamic filtering',
+        'Rating aggregation system with average calculation per restaurant',
+        'Separated frontend (React) and backend (Spring Boot) with CORS configuration'
       ],
-      challenges: 'Citation hallucination — the LLM would confidently cite file paths that did not exist. Fixed by post-processing every answer with a regex validator that cross-checks every cited path against the actual retrieved chunk metadata before sending the response.'
+      challenges: 'Keeping the role-based UI logic clean without duplicating API calls. Solved by centralising auth state in a React context and using Axios interceptors to attach JWT headers globally.'
     }
   },
   {

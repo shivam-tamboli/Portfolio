@@ -101,12 +101,12 @@ function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3>Full Stack Developer & AI Application Builder</h3>
+          <h3>Backend Developer & AI Application Builder</h3>
           <p>
-            I'm a Full Stack Developer pursuing my MCA at MIT World Peace University,
-            with a strong foundation in Java, Spring Boot, and React. I build everything
-            from REST APIs and full-stack web apps to AI-powered systems using RAG pipelines,
-            vector search, and LLM integrations.
+            I'm a Backend Developer pursuing my MCA at MIT World Peace University,
+            with a strong foundation in Java, Spring Boot, and FastAPI. My core focus is
+            designing robust REST APIs, building AI-powered systems, and integrating LLMs
+            into real products using RAG pipelines, vector search, and Spring AI.
           </p>
           <p>
             My recent work includes a production-grade RAG codebase assistant (Python + FastAPI

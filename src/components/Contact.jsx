@@ -108,8 +108,8 @@ function Contact() {
           Open to full-time roles &amp; freelance projects — typically responds within 24 hours
         </div>
         <p className="contact-intro">
-          Looking to hire a developer who can build backend APIs, AI-powered features, or full-stack
-          web apps? I'd love to hear about it. Reach out below or directly via email.
+          Looking to hire a backend developer who can build production REST APIs, AI-powered
+          features, or end-to-end systems? I'd love to hear about it. Reach out below or directly via email.
         </p>
 
         <div className="contact-wrapper">

@@ -4,10 +4,10 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import ParticleBackground from './ParticleBackground'
 
 const titles = [
-  'Full Stack Developer',
   'Backend Developer',
+  'Java & Spring Boot Dev',
   'AI Application Developer',
-  'Java Developer'
+  'Full Stack Developer'
 ]
 
 const prefersReducedMotion = () =>
@@ -103,9 +103,9 @@ function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
         >
-          I build full-stack systems and AI-powered applications — from Spring Boot REST APIs
-          and RAG pipelines to React frontends. Currently focused on integrating LLMs into
-          real products using Spring AI, FastAPI, and vector search.
+          Backend developer specialising in Java, Spring Boot, and FastAPI. I design REST APIs,
+          build AI-powered systems using RAG pipelines and vector search, and ship full-stack
+          products end to end. Currently deepening expertise in Spring AI and LLM integration.
         </m.p>
         
         <m.div
