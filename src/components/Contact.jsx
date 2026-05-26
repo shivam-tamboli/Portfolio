@@ -82,7 +82,7 @@ function Contact() {
     {
       icon: <FaMapMarkerAlt />,
       label: 'Location',
-      value: 'India',
+      value: 'Pune, India',
       link: null
     }
   ]
@@ -105,7 +105,7 @@ function Contact() {
       <div className="contact-content">
         <div className="contact-availability">
           <span className="contact-availability-dot" />
-          Open to full-time roles &amp; freelance projects — typically responds within 24 hours
+          Open to full-time roles (2026) &amp; internship opportunities — responds within 24 hours
         </div>
         <p className="contact-intro">
           Looking to hire a backend developer who can build production REST APIs, AI-powered

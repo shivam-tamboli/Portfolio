@@ -3,12 +3,13 @@ import { m } from 'framer-motion'
 import { FaBars, FaTimes } from 'react-icons/fa'
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Education', href: '#education' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' }
+  { name: 'Home',       href: '#home' },
+  { name: 'About',      href: '#about' },
+  { name: 'Skills',     href: '#skills' },
+  { name: 'Education',  href: '#education' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects',   href: '#projects' },
+  { name: 'Contact',    href: '#contact' }
 ]
 
 function Navbar() {

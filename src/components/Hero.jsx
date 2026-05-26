@@ -66,7 +66,7 @@ function Hero() {
           transition={{ delay: 0.1 }}
         >
           <span className="hero-available-dot" />
-          Available for opportunities
+          Open to full-time roles in 2026
         </m.div>
 
         <m.p

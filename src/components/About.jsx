@@ -57,8 +57,7 @@ function StatItem({ number, label, delay }) {
 function About() {
   const stats = [
     { number: '4+', label: 'Projects Completed' },
-    { number: '2+', label: 'Years Experience' },
-    { number: '10+', label: 'Technologies' }
+    { number: '20+', label: 'Technologies' }
   ]
 
   return (
@@ -103,19 +102,19 @@ function About() {
         >
           <h3>Backend Developer & AI Application Builder</h3>
           <p>
-            I'm a Backend Developer pursuing my MCA at MIT World Peace University,
-            with a strong foundation in Java, Spring Boot, and FastAPI. My core focus is
-            designing robust REST APIs, building AI-powered systems, and integrating LLMs
-            into real products using RAG pipelines, vector search, and Spring AI.
+            I'm a final-year MCA student at MIT World Peace University and a Software Developer
+            Intern at Siddesh Technologies, Pune. My core focus is backend engineering — designing
+            REST APIs with Java and Spring Boot, and building AI-powered systems using RAG pipelines,
+            vector search, and LLM integrations.
           </p>
           <p>
-            My recent work includes a production-grade RAG codebase assistant (Python + FastAPI
-            + OpenAI), an AI song recommender using Spring AI and MongoDB Atlas Vector Search,
-            and a multilingual document translation service powered by Sarvam AI.
+            My recent projects include a production-grade RAG codebase assistant (Python + FastAPI +
+            OpenAI), an AI song recommender using Spring AI and MongoDB Atlas Vector Search, and a
+            multilingual document translation service powered by Sarvam AI.
           </p>
           <p>
-            I enjoy tackling problems that sit at the intersection of backend engineering and
-            applied AI — building systems that are both technically solid and genuinely useful.
+            I enjoy problems at the intersection of backend engineering and applied AI — building
+            systems that are both technically solid and genuinely useful.
           </p>
 
           <div className="about-stats">
