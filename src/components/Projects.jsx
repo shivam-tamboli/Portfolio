@@ -8,7 +8,7 @@ const projects = [
   {
     id: 1,
     title: 'AI Codebase Assistant',
-    description: 'Production-grade RAG system for querying code repositories in natural language. Upload a ZIP or import from GitHub, ask questions in plain English, and get AI answers with exact file and line-number citations — streamed token-by-token.',
+    description: 'Production-grade RAG system for querying any code repository in plain English. Upload a ZIP or import from GitHub, ask questions, and get AI answers with exact file and line-number citations — streamed token-by-token via SSE. Supports 7 languages via AST-based chunking.',
     tech: ['Python 3.12', 'FastAPI', 'MongoDB Atlas', 'React 19', 'OpenAI', 'Cohere', 'JWT'],
     github: 'https://github.com/shivam-tamboli/AI-CodeBase-Assistant',
     demo: 'https://ai-code-base-assistant-kws4.vercel.app',
@@ -29,33 +29,9 @@ const projects = [
     }
   },
   {
-    id: 'lms',
-    title: 'Learning Management System',
-    description: 'Full-stack LMS built during internship at MIT World Peace University. RESTful backend with Express.js and PostgreSQL, JWT authentication, role-based access control (Admin/Student), normalized relational schema, and a Next.js frontend with role-based routing.',
-    tech: ['TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Next.js', 'JWT'],
-    github: null,
-    demo: null,
-    internship: true,
-    icon: <FaLaptopCode />,
-    gradient: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)',
-    caseStudy: {
-      problem: 'MIT World Peace University needed a centralised platform where admins can manage courses and students can access enrolled content — with strict role separation and a clean, typed backend.',
-      solution: 'Built the complete backend with Express.js and PostgreSQL. Designed a normalized relational schema covering users, courses, enrollments, and sessions. JWT-based authentication with role-based access control (Admin/Student) secures every route. TypeScript with ESLint enforces type safety and consistency across the API layer. Delivered a Next.js frontend with protected routes matching backend roles.',
-      highlights: [
-        'JWT authentication with role-based access control (Admin / Student)',
-        'Normalized PostgreSQL schema: users, courses, enrollments, sessions',
-        'Fully typed TypeScript codebase with ESLint enforcement',
-        'Modular API architecture: auth, course management, student workflows',
-        'Next.js frontend with role-aware routing and Tailwind CSS',
-        'Primary focus on backend API design, data modeling, and server-side logic'
-      ],
-      challenges: 'Ensuring strict role separation without duplicating middleware logic. Solved with a composable auth middleware chain that attaches role context to every request, allowing route-level guards to be declarative rather than repeated.'
-    }
-  },
-  {
     id: 2,
     title: 'LyricMind',
-    description: 'AI-powered mood-based song recommender. Accepts natural-language mood input, runs semantic vector search via MongoDB Atlas HNSW, re-ranks candidates with GPT-4o-mini, and returns ranked songs with AI-generated explanations.',
+    description: 'AI-powered mood-based song recommender built with Java and Spring AI. Describe your mood in plain English — the system embeds the query, runs HNSW vector search on MongoDB Atlas, re-ranks candidates with GPT-4o-mini, and returns songs with AI-generated explanations for each match.',
     tech: ['Java 21', 'Spring Boot 3.5', 'Spring AI', 'MongoDB Atlas', 'React 19', 'GPT-4o-mini'],
     github: 'https://github.com/shivam-tamboli/lyricmind',
     demo: 'https://lyricmind-two.vercel.app/',
@@ -75,54 +51,9 @@ const projects = [
     }
   },
   {
-    id: 3,
-    title: 'FlavourFleet',
-    description: 'Full-stack food delivery platform with role-based auth (Admin/Customer), REST APIs for order management, keyword search, rating aggregation, and full CRUD on restaurants and menu items.',
-    tech: ['Java 21', 'Spring Boot 3.2', 'Spring Data JPA', 'React 18', 'MySQL', 'Maven'],
-    github: 'https://github.com/shivam-tamboli/-FlavourFleet',
-    demo: null,
-    icon: <FaPizzaSlice />,
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    caseStudy: {
-      problem: 'Build a complete food delivery platform that handles two different user roles — customers browsing and ordering, and admins managing restaurants and menus — with a single backend API serving both.',
-      solution: 'Implemented role-based authentication with Spring Security JWT. Designed a layered REST API architecture using Spring Boot with service, repository, and controller layers. MySQL with Spring Data JPA handles relational data. The React 18 frontend consumes the API via Axios with role-aware route guarding.',
-      highlights: [
-        'Role-based access control (Admin / Customer) with JWT authentication',
-        'Full CRUD for restaurants, food items, and orders via REST APIs',
-        'Keyword search across menu items with dynamic filtering',
-        'Rating aggregation system with average calculation per restaurant',
-        'Separated frontend (React) and backend (Spring Boot) with CORS configuration'
-      ],
-      challenges: 'Keeping the role-based UI logic clean without duplicating API calls. Solved by centralising auth state in a React context and using Axios interceptors to attach JWT headers globally.'
-    }
-  },
-  {
-    id: 4,
-    title: 'Script Translator',
-    description: 'FastAPI service that translates Marathi PDF/DOCX documents to English or Hindi using OpenAI GPT-4o-mini and Sarvam AI. Features async background processing, real-time progress polling, and downloadable translated DOCX output.',
-    tech: ['Python', 'FastAPI', 'React', 'Vite', 'Tailwind CSS', 'OpenAI', 'Sarvam AI'],
-    github: 'https://github.com/shivam-tamboli/Script-Translator',
-    demo: 'https://script-translator.vercel.app/',
-    icon: <FaFileAlt />,
-    gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
-    caseStudy: {
-      problem: 'Marathi speakers dealing with legal or official documents often need translations to English or Hindi but have no automated tool that handles PDFs and Word documents cleanly — most tools just dump plain text and lose formatting context.',
-      solution: 'Built a FastAPI backend with pdfplumber (PDF extraction) and python-docx (DOCX parsing). Text is chunked into ~1000-character segments and translated in sequence. Provider selection is automatic: OpenAI GPT-4o-mini for English, Sarvam AI sarvam-translate:v1 for Hindi. Each translation job runs as a background task — the client gets a job ID immediately (HTTP 202) and polls for progress every 2 seconds. Completed translations are packaged as a downloadable DOCX.',
-      highlights: [
-        'Supports both PDF and DOCX input formats via pdfplumber + python-docx',
-        'Async background processing — server returns instantly, no blocking',
-        'Real-time progress bar via polling (job status endpoint)',
-        'Automatic provider routing: OpenAI for English, Sarvam AI for Hindi',
-        'Output delivered as formatted, downloadable DOCX file',
-        'Deployed frontend on Vercel'
-      ],
-      challenges: 'Long documents with many chunks caused inconsistent translation quality at chunk boundaries, where sentences were cut mid-way. Resolved by implementing overlap-aware chunking that always breaks at sentence boundaries using regex sentence detection.'
-    }
-  },
-  {
     id: 5,
     title: 'URL Shortener',
-    description: 'Full-stack URL shortener with FastAPI, PostgreSQL, Redis, and React. Turns any long URL into a 6-character short code with optional custom aliases, expiry times, click tracking, and Redis cache-aside for sub-millisecond redirects on cache hits.',
+    description: 'Full-stack URL shortener with FastAPI, PostgreSQL, Redis, and React. Converts long URLs to 6-character codes with optional custom aliases, expiry times, and click tracking. Redis cache-aside (write-through) serves redirects from memory; click counting runs as a background task so the redirect response is instant.',
     tech: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'React', 'Docker', 'Alembic'],
     github: 'https://github.com/shivam-tamboli/url-shortner',
     demo: 'https://url-shortner-eta-khaki.vercel.app',
@@ -143,9 +74,54 @@ const projects = [
     }
   },
   {
+    id: 4,
+    title: 'Script Translator',
+    description: 'FastAPI service that translates Marathi PDF and DOCX documents to English or Hindi. Uses OpenAI GPT-4o-mini for English and Sarvam AI for Hindi, with automatic provider routing, async background jobs, real-time progress polling, and downloadable DOCX output.',
+    tech: ['Python', 'FastAPI', 'React', 'Vite', 'Tailwind CSS', 'OpenAI', 'Sarvam AI'],
+    github: 'https://github.com/shivam-tamboli/Script-Translator',
+    demo: 'https://script-translator.vercel.app/',
+    icon: <FaFileAlt />,
+    gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+    caseStudy: {
+      problem: 'Marathi speakers dealing with legal or official documents often need translations to English or Hindi but have no automated tool that handles PDFs and Word documents cleanly — most tools just dump plain text and lose formatting context.',
+      solution: 'Built a FastAPI backend with pdfplumber (PDF extraction) and python-docx (DOCX parsing). Text is chunked into ~1000-character segments and translated in sequence. Provider selection is automatic: OpenAI GPT-4o-mini for English, Sarvam AI sarvam-translate:v1 for Hindi. Each translation job runs as a background task — the client gets a job ID immediately (HTTP 202) and polls for progress every 2 seconds. Completed translations are packaged as a downloadable DOCX.',
+      highlights: [
+        'Supports both PDF and DOCX input formats via pdfplumber + python-docx',
+        'Async background processing — server returns instantly, no blocking',
+        'Real-time progress bar via polling (job status endpoint)',
+        'Automatic provider routing: OpenAI for English, Sarvam AI for Hindi',
+        'Output delivered as formatted, downloadable DOCX file',
+        'Deployed frontend on Vercel'
+      ],
+      challenges: 'Long documents with many chunks caused inconsistent translation quality at chunk boundaries, where sentences were cut mid-way. Resolved by implementing overlap-aware chunking that always breaks at sentence boundaries using regex sentence detection.'
+    }
+  },
+  {
+    id: 3,
+    title: 'FlavourFleet',
+    description: 'Spring Boot REST API and React frontend for a food delivery platform. Implements Spring Security JWT with role-based access control (Admin/Customer), layered service/repository architecture, Spring Data JPA with MySQL, keyword search with dynamic filtering, and a per-restaurant rating aggregation engine.',
+    tech: ['Java 21', 'Spring Boot 3.2', 'Spring Data JPA', 'React 18', 'MySQL', 'Maven'],
+    github: 'https://github.com/shivam-tamboli/-FlavourFleet',
+    demo: null,
+    icon: <FaPizzaSlice />,
+    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    caseStudy: {
+      problem: 'Build a complete food delivery platform that handles two different user roles — customers browsing and ordering, and admins managing restaurants and menus — with a single backend API serving both.',
+      solution: 'Implemented role-based authentication with Spring Security JWT. Designed a layered REST API architecture using Spring Boot with service, repository, and controller layers. MySQL with Spring Data JPA handles relational data. The React 18 frontend consumes the API via Axios with role-aware route guarding.',
+      highlights: [
+        'Role-based access control (Admin / Customer) with JWT authentication',
+        'Full CRUD for restaurants, food items, and orders via REST APIs',
+        'Keyword search across menu items with dynamic filtering',
+        'Rating aggregation system with average calculation per restaurant',
+        'Separated frontend (React) and backend (Spring Boot) with CORS configuration'
+      ],
+      challenges: 'Modelling the order lifecycle — from cart to placed to delivered — with transitions that Admin and Customer interact with differently. Solved by designing a single orders table with a status field and role-based endpoint guards that restrict which transitions each role can trigger (only admins can mark an order as delivered).'
+    }
+  },
+  {
     id: 6,
     title: 'Multithreaded Web Server',
-    description: 'Java web server built from raw sockets implementing three concurrency models — single-threaded, thread-per-client, and thread-pool — and benchmarked under concurrent load with JMeter to measure real-world throughput and latency differences.',
+    description: 'Java TCP server built from raw sockets — no frameworks — implementing three concurrency models: single-threaded, thread-per-client, and thread-pool. Each model is benchmarked under concurrent load with JMeter to show how concurrency strategy directly affects throughput and latency.',
     tech: ['Java', 'Java Sockets', 'Multithreading', 'ExecutorService', 'JMeter'],
     github: 'https://github.com/shivam-tamboli/multithreaded-web-server',
     demo: null,
@@ -163,6 +139,30 @@ const projects = [
         'Demonstrates why thread-pool is the standard pattern in production servers'
       ],
       challenges: 'The single-threaded server appears fast under light load because there is no thread overhead. The performance gap only becomes visible under concurrent load — JMeter had to be configured with enough virtual threads to saturate the single-threaded bottleneck. Getting the thread-pool size right also required iteration: too small and it bottlenecks like single-threaded, too large and it wastes resources.'
+    }
+  },
+  {
+    id: 'lms',
+    title: 'Learning Management System',
+    description: 'Full-stack LMS built as a Software Development Intern at MIT World Peace University. Express.js + PostgreSQL backend with JWT auth, role-based access control (Admin/Student), normalized relational schema, fully typed TypeScript codebase, and a Next.js frontend with protected role-based routing.',
+    tech: ['TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'Next.js', 'JWT'],
+    github: null,
+    demo: null,
+    internship: true,
+    icon: <FaLaptopCode />,
+    gradient: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)',
+    caseStudy: {
+      problem: 'MIT World Peace University needed a centralised platform where admins can manage courses and students can access enrolled content — with strict role separation and a clean, typed backend.',
+      solution: 'Built the complete backend with Express.js and PostgreSQL. Designed a normalized relational schema covering users, courses, enrollments, and sessions. JWT-based authentication with role-based access control (Admin/Student) secures every route. TypeScript with ESLint enforces type safety and consistency across the API layer. Delivered a Next.js frontend with protected routes matching backend roles.',
+      highlights: [
+        'JWT authentication with role-based access control (Admin / Student)',
+        'Normalized PostgreSQL schema: users, courses, enrollments, sessions',
+        'Fully typed TypeScript codebase with ESLint enforcement',
+        'Modular API architecture: auth, course management, student workflows',
+        'Next.js frontend with role-aware routing and Tailwind CSS',
+        'Primary focus on backend API design, data modeling, and server-side logic'
+      ],
+      challenges: 'Ensuring strict role separation without duplicating middleware logic. Solved with a composable auth middleware chain that attaches role context to every request, allowing route-level guards to be declarative rather than repeated.'
     }
   }
 ]

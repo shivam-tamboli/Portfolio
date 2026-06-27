@@ -103,21 +103,21 @@ function About() {
         >
           <h3>Backend Developer & AI Application Builder</h3>
           <p>
-            I'm a final-year MCA student (graduating 2026) who recently completed a Software
-            Development Internship at MIT World Peace University, Pune. My core focus is backend
-            engineering — designing REST APIs with Java and Spring Boot, and building AI-powered
-            systems using RAG pipelines, vector search, and LLM integrations.
+            I'm an MCA graduate (MIT World Peace University, 2026) who completed a Software
+            Development Internship there. My core focus is backend engineering — designing REST APIs
+            with Java and Spring Boot, and building AI-powered systems using RAG pipelines, vector
+            search, and LLM integrations.
           </p>
           <p>
-            My recent projects include a production-grade RAG codebase assistant (Python + FastAPI +
+            My projects include a production-grade RAG codebase assistant (Python + FastAPI +
             OpenAI), an AI song recommender using Spring AI and MongoDB Atlas Vector Search, a
-            multilingual document translation service powered by Sarvam AI, and a full-stack URL
-            shortener with FastAPI, PostgreSQL, and Redis.
+            multilingual document translation service, and a full-stack URL shortener with FastAPI,
+            PostgreSQL, and Redis.
           </p>
           <p>
             I enjoy problems at the intersection of backend engineering and applied AI — building
             systems that are both technically solid and genuinely useful. Open to full-time backend
-            roles starting mid-2026.
+            roles.
           </p>
 
           <div className="about-stats">
