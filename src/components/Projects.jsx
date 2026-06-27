@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { m } from 'framer-motion'
 import Tilt from 'react-parallax-tilt'
-import { FaGithub, FaExternalLinkAlt, FaPizzaSlice, FaMusic, FaRobot, FaFileAlt, FaBookOpen, FaLaptopCode, FaLock } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaPizzaSlice, FaMusic, FaRobot, FaFileAlt, FaBookOpen, FaLaptopCode, FaLock, FaLink, FaServer } from 'react-icons/fa'
 import ProjectModal from './ProjectModal'
 
 const projects = [
@@ -117,6 +117,52 @@ const projects = [
         'Deployed frontend on Vercel'
       ],
       challenges: 'Long documents with many chunks caused inconsistent translation quality at chunk boundaries, where sentences were cut mid-way. Resolved by implementing overlap-aware chunking that always breaks at sentence boundaries using regex sentence detection.'
+    }
+  },
+  {
+    id: 5,
+    title: 'URL Shortener',
+    description: 'Full-stack URL shortener with FastAPI, PostgreSQL, Redis, and React. Turns any long URL into a 6-character short code with optional custom aliases, expiry times, click tracking, and Redis cache-aside for sub-millisecond redirects on cache hits.',
+    tech: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'React', 'Docker', 'Alembic'],
+    github: 'https://github.com/shivam-tamboli/url-shortner',
+    demo: 'https://url-shortner-eta-khaki.vercel.app',
+    icon: <FaLink />,
+    gradient: 'linear-gradient(135deg, #fc466b 0%, #3f5efb 100%)',
+    caseStudy: {
+      problem: 'Build a production-grade URL shortener that handles concurrent redirects without hammering the database on every click, supports custom aliases and expiry, and gives users honest feedback when things go wrong — expired links, taken codes, invalid input.',
+      solution: 'Built an async FastAPI backend with PostgreSQL as the source of truth and Redis as a cache layer using the cache-aside pattern. Short codes are generated with 62-character base encoding (56 billion possible codes). New URLs are cached on write — not just on first read — so the very first click is already served from cache. Click counting runs as a FastAPI BackgroundTask so the redirect response is sent before the database write happens.',
+      highlights: [
+        'Cache-aside with write-through: Redis populated on creation, not just on first read — every redirect served from memory',
+        'Background task click counting — redirect completes before DB write, zero added latency to the user',
+        'Custom short codes with 409 Conflict on collision — honest UX, no silent fallbacks',
+        'Link expiry: Redis TTL and PostgreSQL expires_at always set to the same duration, no separate cleanup job',
+        'Same long URL always returns the same short code — deduplication prevents redundant rows',
+        '12 automated tests (pytest + httpx) with isolated DB per test, covering all core behaviours and edge cases'
+      ],
+      challenges: 'Async SQLAlchemy sessions cannot be passed into background tasks — the session is already closed by the time the task runs, causing silent failures. Fixed by giving each background task its own independent session. Also required a full rewrite of the Alembic env.py since the default synchronous setup hangs against an async engine.'
+    }
+  },
+  {
+    id: 6,
+    title: 'Multithreaded Web Server',
+    description: 'Java web server built from raw sockets implementing three concurrency models — single-threaded, thread-per-client, and thread-pool — and benchmarked under concurrent load with JMeter to measure real-world throughput and latency differences.',
+    tech: ['Java', 'Java Sockets', 'Multithreading', 'ExecutorService', 'JMeter'],
+    github: 'https://github.com/shivam-tamboli/multithreaded-web-server',
+    demo: null,
+    icon: <FaServer />,
+    gradient: 'linear-gradient(135deg, #f7b733 0%, #fc4a1a 100%)',
+    caseStudy: {
+      problem: 'Most backend developers use frameworks without understanding what actually happens when multiple clients connect simultaneously. The goal was to build a TCP server from raw Java sockets — no frameworks — and measure how each concurrency model behaves under real load.',
+      solution: 'Implemented three server variants using java.net.ServerSocket. Single-threaded: accepts one connection, handles it fully, then accepts the next — every concurrent client waits in the OS queue. Thread-per-client: spawns a new Thread for each accepted socket using a lambda consumer, enabling true concurrency but with unbounded thread creation. Thread-pool: uses a fixed-size ExecutorService to bound resource usage and maintain consistent throughput under high load. All three were benchmarked with JMeter using concurrent virtual users.',
+      highlights: [
+        'Single-threaded model: zero thread overhead but blocks all concurrent clients — only one served at a time',
+        'Thread-per-client: true concurrency via new Thread per socket, but no ceiling on thread count',
+        'Thread-pool (ExecutorService): bounded concurrency — consistent throughput without unbounded thread growth',
+        'JMeter benchmarks quantify throughput and latency under concurrent client load across all three models',
+        'Pure Java — java.net.ServerSocket, no frameworks or libraries',
+        'Demonstrates why thread-pool is the standard pattern in production servers'
+      ],
+      challenges: 'The single-threaded server appears fast under light load because there is no thread overhead. The performance gap only becomes visible under concurrent load — JMeter had to be configured with enough virtual threads to saturate the single-threaded bottleneck. Getting the thread-pool size right also required iteration: too small and it bottlenecks like single-threaded, too large and it wastes resources.'
     }
   }
 ]

@@ -57,7 +57,7 @@ function StatItem({ number, label, delay }) {
 
 function About() {
   const stats = [
-    { number: '4+', label: 'Projects Completed' },
+    { number: '6+', label: 'Projects Completed' },
     { number: '20+', label: 'Technologies' }
   ]
 
@@ -103,19 +103,21 @@ function About() {
         >
           <h3>Backend Developer & AI Application Builder</h3>
           <p>
-            I'm a final-year MCA student and Software Development Intern at MIT World Peace
-            University, Pune. My core focus is backend engineering — designing
-            REST APIs with Java and Spring Boot, and building AI-powered systems using RAG pipelines,
-            vector search, and LLM integrations.
+            I'm a final-year MCA student (graduating 2026) who recently completed a Software
+            Development Internship at MIT World Peace University, Pune. My core focus is backend
+            engineering — designing REST APIs with Java and Spring Boot, and building AI-powered
+            systems using RAG pipelines, vector search, and LLM integrations.
           </p>
           <p>
             My recent projects include a production-grade RAG codebase assistant (Python + FastAPI +
-            OpenAI), an AI song recommender using Spring AI and MongoDB Atlas Vector Search, and a
-            multilingual document translation service powered by Sarvam AI.
+            OpenAI), an AI song recommender using Spring AI and MongoDB Atlas Vector Search, a
+            multilingual document translation service powered by Sarvam AI, and a full-stack URL
+            shortener with FastAPI, PostgreSQL, and Redis.
           </p>
           <p>
             I enjoy problems at the intersection of backend engineering and applied AI — building
-            systems that are both technically solid and genuinely useful.
+            systems that are both technically solid and genuinely useful. Open to full-time backend
+            roles starting mid-2026.
           </p>
 
           <div className="about-stats">

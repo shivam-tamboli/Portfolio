@@ -6,7 +6,7 @@ import {
   SiPython, SiJavascript, SiTypescript,
   SiSpringboot, SiFastapi, SiExpress, SiNodedotjs,
   SiReact, SiNextdotjs, SiTailwindcss,
-  SiMongodb, SiPostgresql, SiMysql, SiDocker,
+  SiMongodb, SiPostgresql, SiMysql, SiDocker, SiRedis,
   SiGit, SiPostman, SiApachemaven, SiJsonwebtokens
 } from 'react-icons/si'
 
@@ -55,6 +55,7 @@ const skillCategories = [
       { name: 'MongoDB Atlas', icon: <SiMongodb />,    color: '#47a248' },
       { name: 'PostgreSQL',    icon: <SiPostgresql />, color: '#336791' },
       { name: 'MySQL',         icon: <SiMysql />,      color: '#4479a1' },
+      { name: 'Redis',         icon: <SiRedis />,      color: '#dc382d' },
       { name: 'Docker',        icon: <SiDocker />,     color: '#2496ed' },
     ]
   },

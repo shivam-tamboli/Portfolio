@@ -104,7 +104,8 @@ function Hero() {
         >
           Backend developer specialising in Java, Spring Boot, and FastAPI. I design REST APIs,
           build AI-powered systems using RAG pipelines and vector search, and ship full-stack
-          products end to end. Currently deepening expertise in Spring AI and LLM integration.
+          products end to end. Completed internship at MIT World Peace University — open to
+          full-time backend roles in 2026.
         </m.p>
         
         <m.div

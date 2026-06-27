@@ -8,7 +8,7 @@ const education = [
     institution: 'MIT World Peace University',
     location: 'Pune, Maharashtra',
     period: '2024 – 2026',
-    status: 'Pursuing',
+    status: 'Completed',
     courses: ['Advanced Java', 'Web Technologies', 'Database Systems', 'Software Engineering'],
     icon: <FaGraduationCap />,
     accent: true
@@ -27,8 +27,16 @@ const education = [
 ]
 
 const certifications = [
-  { name: 'Java Development',            issuer: 'Coursera' },
-  { name: 'Generative AI Fundamentals',  issuer: 'Coursera' },
+  {
+    name: 'Java Development',
+    issuer: 'Coursera',
+    link: 'https://drive.google.com/file/d/1k224zTGwaIVkDK_orJ8kDiRknn2QqilP/view?usp=sharing'
+  },
+  {
+    name: 'Generative AI Fundamentals',
+    issuer: 'Coursera',
+    link: 'https://drive.google.com/file/d/1h6Ej8olYwK_qiIMGzDmNv_WgO6_JcYBu/view?usp=sharing'
+  },
 ]
 
 function Education() {
@@ -67,7 +75,7 @@ function Education() {
                 </div>
                 <div className="education-meta">
                   <span className="education-period">{item.period}</span>
-                  <span className={`education-status ${item.accent ? 'education-status--pursuing' : 'education-status--completed'}`}>
+                  <span className={`education-status ${item.status === 'Completed' ? 'education-status--completed' : 'education-status--pursuing'}`}>
                     {item.status}
                   </span>
                 </div>
@@ -93,15 +101,25 @@ function Education() {
           <FaCertificate /> Certifications
         </h3>
         <div className="certifications-grid">
-          {certifications.map((cert) => (
-            <div key={cert.name} className="certification-card">
-              <FaCertificate className="cert-icon" />
-              <div>
-                <p className="cert-name">{cert.name}</p>
-                <p className="cert-issuer">{cert.issuer}</p>
-              </div>
-            </div>
-          ))}
+          {certifications.map((cert) => {
+            const Tag = cert.link ? 'a' : 'div'
+            const linkProps = cert.link
+              ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer' }
+              : {}
+            return (
+              <Tag
+                key={cert.name}
+                className={`certification-card${cert.link ? ' certification-card--link' : ''}`}
+                {...linkProps}
+              >
+                <FaCertificate className="cert-icon" />
+                <div>
+                  <p className="cert-name">{cert.name}</p>
+                  <p className="cert-issuer">{cert.issuer}</p>
+                </div>
+              </Tag>
+            )
+          })}
         </div>
       </m.div>
     </section>

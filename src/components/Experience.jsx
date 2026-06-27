@@ -7,8 +7,8 @@ const experiences = [
     role: 'Software Development Intern',
     company: 'MIT World Peace University',
     location: 'Pune, India',
-    period: 'Feb 2026 – Present',
-    status: 'Current',
+    period: 'Feb 2026 – Jun 2026',
+    status: 'Completed',
     project: 'Learning Management System',
     description:
       'Designed and built a RESTful backend with Express.js and PostgreSQL, implementing JWT-based authentication and role-based access control (Admin/Student) for a full Learning Management System. Engineered normalized relational database schemas and wrote typed, ESLint-enforced server-side code in TypeScript. Delivered a Next.js frontend with role-based routing; primary focus on backend API design, data modeling, and server-side logic.',
@@ -57,7 +57,7 @@ function Experience() {
                 </div>
                 <div className="experience-meta">
                   <span className="experience-period">{item.period}</span>
-                  <span className="experience-status experience-status--current">{item.status}</span>
+                  <span className={`experience-status experience-status--${item.status === 'Current' ? 'current' : 'completed'}`}>{item.status}</span>
                 </div>
               </div>
 
